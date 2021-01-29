@@ -39,7 +39,19 @@ class Playlist:
   # TODO: Create a method called remove_song that removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
 
   def remove_song(self, title):
-    
+    current_song = self.__first_song
+    if current_song.get_title() == title:
+      self.__first_song = current_song.get_next_song()
+      return print(f"{title} has been removed")
+    else:
+      while current_song:
+        if current_song.get_next_song().get_title() == title:
+          current_song.set_next_song(current_song.get_next_song().get_next_song())
+          return print(f"{title} has been removed")
+        else:
+          current_song = current_song.get_next_song()
+
+
 
 
 
