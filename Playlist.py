@@ -40,16 +40,19 @@ class Playlist:
 
   def remove_song(self, title):
     current_song = self.__first_song
+    if not current_song:
+      return print(f"There are no songs to remove")
     if current_song.get_title() == title:
       self.__first_song = current_song.get_next_song()
       return print(f"{title} has been removed")
     else:
-      while current_song:
+      while current_song.get_next_song():
         if current_song.get_next_song().get_title() == title:
           current_song.set_next_song(current_song.get_next_song().get_next_song())
           return print(f"{title} has been removed")
         else:
           current_song = current_song.get_next_song()
+      return print(f"{title} wasn't found to be removed")
 
 
 
