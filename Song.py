@@ -1,7 +1,7 @@
 class Song:
 
   def __init__(self, title):
-      self.__title = title
+      self.__title = str(title).title()
       self.__next_song = None
 
 
