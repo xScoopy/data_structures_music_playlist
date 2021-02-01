@@ -5,9 +5,8 @@ class Playlist:
     self.__first_song = None #'Head' pointer for our linked list
 
 
-  # TODO: Create a method called add_song that creates a Song object and adds it to the playlist. This method has one parameter called title.
-
   def add_song(self, title):
+    '''Add a song node to the playlist. This will add the song to the END of the linked list'''
     if self.__first_song == None:
       new_song = Song(title)
       new_song.set_next_song(self.__first_song)
@@ -19,9 +18,8 @@ class Playlist:
         current_song = current_song.get_next_song()
       current_song.set_next_song(new_song)
 
-  # TODO: Create a method called find_song that searches for whether a song exits in the playlist and returns its index. The method has one parameters, title, which is the title of the song to be searched for. If the song is found, return its index.
-
   def find_song(self, title):
+    '''Finds a song and prints the song position in the playlist to the user'''
     current_song = self.__first_song
     counter = 0
     if self.length() is None:
@@ -36,9 +34,8 @@ class Playlist:
       return -1
 
 
-  # TODO: Create a method called remove_song that removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
-
   def remove_song(self, title):
+    '''Checks if song exists and removes, prints a message if it could not find the song to remove to allow users to check for typos in their entry'''
     current_song = self.__first_song
     if not current_song:
       return print(f"There are no songs to remove")
@@ -55,12 +52,8 @@ class Playlist:
       return print(f"{title} wasn't found to be removed")
 
 
-
-
-
-  # TODO: Create a method called length, which returns the number of songs in the playlist.
-
   def length(self):
+    '''returns length of the playlist'''
     current_song = self.__first_song
     counter = 0
     while current_song:
@@ -69,14 +62,8 @@ class Playlist:
     return counter
 
 
-  # TODO: Create a method called print_songs that prints a numbered list of the songs in the playlist.
-
-  # Example:
-  # 1. Song Title 1
-  # 2. Song Title 2
-  # 3. Song Title 3
-
   def print_songs(self):
+    '''Prints songs in order each with their own numerical counter next to them.'''
     current_song = self.__first_song
     counter = 1
     while current_song:
